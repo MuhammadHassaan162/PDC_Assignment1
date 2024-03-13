@@ -6,7 +6,7 @@
 
 void matrixVectorMultTiled(int *matrix, int *vector, int *result, int rows, int cols, int rank, int size) {
     int chunk_size = rows / size;
-    int *local_matrix = (int *)malloc(chunk_size * cols * sizeof(int)); // Separate buffer for receiving scattered matrix data
+    int *local_matrix = (int *)malloc(chunk_size * cols * sizeof(int)); 
     int *local_result = (int *)malloc(chunk_size * sizeof(int));
 
     MPI_Scatter(matrix, chunk_size * cols, MPI_INT, local_matrix, chunk_size * cols, MPI_INT, 0, MPI_COMM_WORLD);
